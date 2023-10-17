@@ -1,6 +1,6 @@
 package net.deechael.dcg.variable;
 
-import net.deechael.dcg.structure.importation.DyExportable;
+import net.deechael.dcg.source.structure.importation.DyExportable;
 import org.jetbrains.annotations.NotNull;
 
 public interface DyType extends DyExportable {
@@ -75,8 +75,12 @@ public interface DyType extends DyExportable {
     boolean isArray();
 
     @Override
-    default String toExportableString() {
+    default @NotNull String toExportableString() {
         return this.toTypeString();
     }
 
+    @Override
+    default boolean isStatic() {
+        return false;
+    }
 }

@@ -1,9 +1,9 @@
 package net.deechael.dcg;
 
-import net.deechael.dcg.compiler.DynamicCompiler;
-import net.deechael.dcg.mapper.DynamicMapper;
-import net.deechael.dcg.reflector.DynamicReflector;
-import net.deechael.dcg.sourcer.DynamicSourcer;
+import net.deechael.dcg.compile.DynamicCompiler;
+import net.deechael.dcg.map.DynamicMapper;
+import net.deechael.dcg.reflect.DynamicReflector;
+import net.deechael.dcg.source.DynamicSourcer;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;

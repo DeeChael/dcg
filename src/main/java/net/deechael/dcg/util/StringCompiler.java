@@ -1,9 +1,12 @@
 package net.deechael.dcg.util;
 
-import net.deechael.dcg.structure.importation.DyExportable;
+import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.variable.DyType;
 import net.deechael.dcg.variable.JvmVariable;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 public final class StringCompiler {
@@ -36,8 +39,27 @@ public final class StringCompiler {
     }
 
     public static String compileImports(Iterable<DyExportable> imports) {
+        List<DyExportable> sortedExportables = new ArrayList<>();
+        for (DyExportable exportable : imports)
+            sortedExportables.add(exportable);
+        sortedExportables.sort((o1, o2) -> {
+            if (o1.isStatic() && !o2.isStatic())
+                return 1;
+            else if (!o1.isStatic() && o2.isStatic())
+                return -1;
+            return 0;
+        });
         StringBuilder builder = new StringBuilder();
-        // TODO
+        for (DyExportable exportable : imports) {
+            builder.append("import")
+                    .append(" ");
+            if (exportable.isStatic())
+                builder.append("static")
+                        .append(" ");
+            builder.append(exportable.toExportableString())
+                    .append(";")
+                    .append("\n");
+        }
         return builder.toString();
     }
 

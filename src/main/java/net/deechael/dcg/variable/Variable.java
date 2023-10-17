@@ -1,6 +1,6 @@
 package net.deechael.dcg.variable;
 
-import net.deechael.dcg.structure.DyStructure;
+import net.deechael.dcg.source.structure.DyStructure;
 import org.jetbrains.annotations.NotNull;
 
 public interface Variable {

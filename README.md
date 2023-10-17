@@ -10,11 +10,8 @@ DynamicClassManager manager = DynamicClassManager.builder()
 
 DynamicSourcer sourcer = manager.sourcer();
 
-DyClass newClazz = sourcer.newClass()
-        .withPackage("net.deechael.dcg.test")
-        .withName("Test")
-        .withVisibility(Visibility.PUBLIC)
-        .build();
+DyPackage pkg = sourcer.newPackage("net.deechael.dcg.test");
+DyClass clazz = pkg.newClass(Visibility.PUBLIC, "Test");
 
 // do other things
 ```

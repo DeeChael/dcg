@@ -1,9 +1,9 @@
 package net.deechael.dcg.test;
 
 import net.deechael.dcg.DynamicClassManager;
-import net.deechael.dcg.mapper.DynamicMapper;
-import net.deechael.dcg.mapper.Mappings;
-import net.deechael.dcg.mapper.MethodMappings;
+import net.deechael.dcg.map.DynamicMapper;
+import net.deechael.dcg.map.Mappings;
+import net.deechael.dcg.map.MethodMappings;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

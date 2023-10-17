@@ -1,9 +1,10 @@
 package net.deechael.dcg.test;
 
 import net.deechael.dcg.DynamicClassManager;
-import net.deechael.dcg.compiler.DynamicCompiler;
-import net.deechael.dcg.sourcer.DyClass;
-import net.deechael.dcg.sourcer.DynamicSourcer;
+import net.deechael.dcg.compile.DynamicCompiler;
+import net.deechael.dcg.source.DyClass;
+import net.deechael.dcg.source.DyPackage;
+import net.deechael.dcg.source.DynamicSourcer;
 import net.deechael.dcg.variable.Visibility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -30,11 +31,8 @@ public class SimpleTest {
     @Test
     public void simpleClassTest() {
         DynamicSourcer sourcer = this.manager.sourcer();
-        DyClass clazz = sourcer.newClass()
-                .withPackage("net.deechael.dcg.test")
-                .withName("Test")
-                .withVisibility(Visibility.PUBLIC)
-                .build();
+        DyPackage pkg = sourcer.newPackage("net.deechael.dcg.test");
+        DyClass clazz = pkg.newClass(Visibility.PUBLIC, "Test");
 
     }
 
