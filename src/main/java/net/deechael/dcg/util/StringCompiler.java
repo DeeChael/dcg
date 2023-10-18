@@ -1,13 +1,11 @@
 package net.deechael.dcg.util;
 
 import net.deechael.dcg.source.structure.importation.DyExportable;
+import net.deechael.dcg.source.structure.invokation.Invokation;
 import net.deechael.dcg.variable.DyType;
 import net.deechael.dcg.variable.JvmVariable;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public final class StringCompiler {
 
@@ -58,6 +56,16 @@ public final class StringCompiler {
                         .append(" ");
             builder.append(exportable.toExportableString())
                     .append(";")
+                    .append("\n");
+        }
+        return builder.toString();
+    }
+
+    public static String compileInvokations(Iterable<Invokation> invokations) {
+        StringBuilder builder = new StringBuilder();
+        Iterator<Invokation> iterator = invokations.iterator();
+        for (Invokation invokation = iterator.next(); iterator.hasNext(); invokation = iterator.next()) {
+            builder.append(invokation.toCompilableString())
                     .append("\n");
         }
         return builder.toString();
