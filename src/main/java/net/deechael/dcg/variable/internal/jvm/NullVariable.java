@@ -8,6 +8,11 @@ import org.jetbrains.annotations.NotNull;
 
 public class NullVariable implements Variable {
 
+    public final static NullVariable INSTANCE = new NullVariable();
+
+    private NullVariable() {
+    }
+
     @Override
     public @NotNull DyType getType() {
         try {

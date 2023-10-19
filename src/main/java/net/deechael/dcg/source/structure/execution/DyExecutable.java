@@ -4,6 +4,7 @@ import net.deechael.dcg.source.structure.DyLabel;
 import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.invokation.DyInvokable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
+import net.deechael.dcg.source.structure.invokation.Invoker;
 import net.deechael.dcg.source.structure.invokation.internal.CreateLabelInvokation;
 import net.deechael.dcg.source.structure.invokation.internal.CreateVariableInvokation;
 import net.deechael.dcg.source.structure.invokation.internal.InvokeMethodInvokation;
@@ -36,7 +37,7 @@ public abstract class DyExecutable implements DyInvokable, DyStructure {
         if (newValue != null)
             Preconditions.domain(this, newValue.getDomain());
 
-        ModifyVariableInvokation invokation = new ModifyVariableInvokation(referring, newValue != null ? newValue : new NullVariable());
+        ModifyVariableInvokation invokation = new ModifyVariableInvokation(referring, newValue != null ? newValue : Variable.nullVariable());
         this.invokations.add(invokation);
     }
 
@@ -45,8 +46,9 @@ public abstract class DyExecutable implements DyInvokable, DyStructure {
         return new DyLabel(name);
     }
 
-    public InvokeMethodVariable invoke(Variable invoker, String methodName, Variable... parameters) {
-        Preconditions.domain(this, invoker.getDomain());
+    public InvokeMethodVariable invoke(@Nullable Invoker invoker, @NotNull String methodName, Variable... parameters) {
+        if (invoker instanceof Variable invokerVariable)
+            Preconditions.domain(this, invokerVariable.getDomain());
         for (Variable parameter : parameters)
             Preconditions.domain(this, parameter.getDomain());
 

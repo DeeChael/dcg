@@ -1,9 +1,10 @@
 package net.deechael.dcg.variable;
 
 import net.deechael.dcg.source.structure.importation.DyExportable;
+import net.deechael.dcg.source.structure.invokation.Invoker;
 import org.jetbrains.annotations.NotNull;
 
-public interface DyType extends DyExportable {
+public interface DyType extends DyExportable, Invoker {
 
     // Default provided JTypes
     DyType VOID = classType(void.class);
@@ -75,7 +76,14 @@ public interface DyType extends DyExportable {
     boolean isArray();
 
     @Override
-    default @NotNull String toExportableString() {
+    @NotNull
+    default String toExportableString() {
+        return this.toTypeString();
+    }
+
+    @Override
+    @NotNull
+    default String toInvokerString() {
         return this.toTypeString();
     }
 
@@ -83,4 +91,5 @@ public interface DyType extends DyExportable {
     default boolean isStatic() {
         return false;
     }
+
 }
