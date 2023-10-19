@@ -4,7 +4,9 @@ import net.deechael.dcg.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DynamicSourcer {
 
@@ -14,14 +16,16 @@ public class DynamicSourcer {
             "return", "this",
     };
 
-    private final List<DyPackage> packages = new ArrayList<>();
+    private final Map<String, DyPackage> packages = new HashMap<>();
     final List<DyClass> classes = new ArrayList<>();
 
     public DynamicSourcer() {
     }
 
     public DyPackage newPackage(String name) {
-        return new DyPackage(this, name);
+        if (!this.packages.containsKey(name))
+            this.packages.put(name, new DyPackage(this, name));
+        return this.packages.get(name);
     }
 
     @NotNull
