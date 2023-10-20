@@ -5,7 +5,7 @@ import net.deechael.dcg.compile.DynamicCompiler;
 import net.deechael.dcg.source.DyClass;
 import net.deechael.dcg.source.DyPackage;
 import net.deechael.dcg.source.DynamicSourcer;
-import net.deechael.dcg.variable.Visibility;
+import net.deechael.dcg.source.variable.Visibility;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;

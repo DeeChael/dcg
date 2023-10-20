@@ -1,4 +1,4 @@
-package net.deechael.dcg.variable;
+package net.deechael.dcg.source.variable;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -21,7 +21,7 @@ final class DyJvmType implements DyType {
             tempClass = tempClass.getComponentType();
             this.isArray = true;
         }
-        this.baseType = DyType.classType(tempClass);
+        this.baseType = classType(tempClass);
     }
 
     @Override

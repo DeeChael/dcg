@@ -10,9 +10,9 @@ import net.deechael.dcg.source.structure.container.DyFieldContainer;
 import net.deechael.dcg.source.structure.container.DyMethodContainer;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.importation.DyImportable;
-import net.deechael.dcg.variable.DyType;
-import net.deechael.dcg.variable.JvmVariable;
-import net.deechael.dcg.variable.Visibility;
+import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.variable.JvmVariable;
+import net.deechael.dcg.source.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

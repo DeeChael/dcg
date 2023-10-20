@@ -1,7 +1,7 @@
 package net.deechael.dcg.source.structure.invokation.internal;
 
 import net.deechael.dcg.source.structure.invokation.Invokation;
-import net.deechael.dcg.variable.internal.InvokeMethodVariable;
+import net.deechael.dcg.source.variable.internal.InvokeMethodVariable;
 
 public class InvokeMethodInvokation implements Invokation {
 
@@ -13,7 +13,10 @@ public class InvokeMethodInvokation implements Invokation {
 
     @Override
     public String toCompilableString() {
-        return this.variable.toVariableString();
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.variable.toVariableString())
+                .append(";");
+        return builder.toString();
     }
 
 }

@@ -2,8 +2,8 @@ package net.deechael.dcg.util;
 
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
-import net.deechael.dcg.variable.DyType;
-import net.deechael.dcg.variable.JvmVariable;
+import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.variable.JvmVariable;
 
 import java.util.*;
 

@@ -1,8 +1,8 @@
 package net.deechael.dcg.source.structure;
 
-import net.deechael.dcg.variable.JvmVariable;
+import net.deechael.dcg.source.variable.JvmVariable;
 import net.deechael.dcg.DyTranstringable;
-import net.deechael.dcg.variable.DyType;
+import net.deechael.dcg.source.variable.DyType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 

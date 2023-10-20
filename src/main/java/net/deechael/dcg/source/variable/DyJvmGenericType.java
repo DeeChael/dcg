@@ -1,4 +1,4 @@
-package net.deechael.dcg.variable;
+package net.deechael.dcg.source.variable;
 
 import org.jetbrains.annotations.NotNull;
 

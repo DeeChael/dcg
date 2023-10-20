@@ -1,9 +1,9 @@
-package net.deechael.dcg.variable.internal;
+package net.deechael.dcg.source.variable.internal;
 
 import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.invokation.Invoker;
-import net.deechael.dcg.variable.DyType;
-import net.deechael.dcg.variable.Variable;
+import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.variable.Variable;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -48,8 +48,7 @@ public class InvokeMethodVariable implements Variable {
         builder.append(this.methodName)
                 .append("(")
                 .append(String.join(", ", Arrays.stream(this.parameters).map(Variable::toVariableString).toList().toArray(new String[0])))
-                .append(")")
-                .append(";");
+                .append(")");
         return builder.toString();
     }
 

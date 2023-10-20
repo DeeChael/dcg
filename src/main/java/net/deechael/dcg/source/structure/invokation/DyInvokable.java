@@ -11,4 +11,6 @@ public interface DyInvokable {
     @NotNull
     List<Invokation> listInvokations();
 
+    void clearInvokations();
+
 }

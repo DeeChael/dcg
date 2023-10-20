@@ -1,7 +1,7 @@
 package net.deechael.dcg.source.structure.invokation.internal;
 
 import net.deechael.dcg.source.structure.invokation.Invokation;
-import net.deechael.dcg.variable.Variable;
+import net.deechael.dcg.source.variable.Variable;
 
 public class ModifyVariableInvokation implements Invokation {
 

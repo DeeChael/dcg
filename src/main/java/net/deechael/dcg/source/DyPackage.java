@@ -1,7 +1,7 @@
 package net.deechael.dcg.source;
 
 import net.deechael.dcg.util.Preconditions;
-import net.deechael.dcg.variable.Visibility;
+import net.deechael.dcg.source.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

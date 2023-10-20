@@ -1,9 +1,9 @@
-package net.deechael.dcg.variable.internal.jvm;
+package net.deechael.dcg.source.variable.internal.jvm;
 
 import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.DyUndefinedStructure;
-import net.deechael.dcg.variable.DyType;
-import net.deechael.dcg.variable.Variable;
+import net.deechael.dcg.source.variable.Variable;
+import net.deechael.dcg.source.variable.DyType;
 import org.jetbrains.annotations.NotNull;
 
 public class NullVariable implements Variable {

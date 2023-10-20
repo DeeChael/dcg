@@ -1,4 +1,4 @@
-package net.deechael.dcg.variable;
+package net.deechael.dcg.source.variable;
 
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invoker;

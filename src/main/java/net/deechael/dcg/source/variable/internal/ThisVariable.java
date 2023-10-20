@@ -1,8 +1,8 @@
-package net.deechael.dcg.variable.internal;
+package net.deechael.dcg.source.variable.internal;
 
 import net.deechael.dcg.source.structure.DyStructure;
-import net.deechael.dcg.variable.DyType;
-import net.deechael.dcg.variable.Variable;
+import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.variable.Variable;
 import org.jetbrains.annotations.NotNull;
 
 public final class ThisVariable implements Variable, NonNameVariable {

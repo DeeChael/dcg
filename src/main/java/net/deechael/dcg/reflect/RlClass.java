@@ -1,6 +1,6 @@
 package net.deechael.dcg.reflect;
 
-import net.deechael.dcg.variable.DyType;
+import net.deechael.dcg.source.variable.DyType;
 import org.jetbrains.annotations.NotNull;
 
 public class RlClass implements DyType {

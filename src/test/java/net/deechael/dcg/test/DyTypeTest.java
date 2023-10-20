@@ -1,6 +1,6 @@
 package net.deechael.dcg.test;
 
-import net.deechael.dcg.variable.DyType;
+import net.deechael.dcg.source.variable.DyType;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

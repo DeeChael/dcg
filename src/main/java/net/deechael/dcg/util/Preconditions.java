@@ -5,7 +5,6 @@ import net.deechael.dcg.source.structure.DyUndefinedStructure;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.regex.Pattern;
 
 public final class Preconditions {
@@ -25,27 +24,29 @@ public final class Preconditions {
     }
 
     public static void domain(@NotNull DyStructure current, @NotNull DyStructure another) {
-        if (current instanceof DyUndefinedStructure)
-            return;
-        if (another == current)
-            return;
-        if (another instanceof DyUndefinedStructure)
-            return;
-        IllegalAccessException exception = new IllegalAccessException("This object is not accessible in this structure!");
-        if (another.getParentDomains().length == 0)
-            try {
-                throw exception;
-            } catch (IllegalAccessException e) {
-                throw new RuntimeException(e);
-            }
-        if (Arrays.stream(another.getParentDomains()).toList().contains(current))
+        if (domain0(current, another))
             return;
         try {
-            throw exception;
+            throw new IllegalAccessException("This object is not accessible in this structure!");
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
         }
     }
+
+    private static boolean domain0(DyStructure current, DyStructure another) {
+        if (current instanceof DyUndefinedStructure)
+            return true;
+        if (another == current)
+            return true;
+        if (another instanceof DyUndefinedStructure)
+            return true;
+        if (another.getParentDomains().length == 0)
+            for (DyStructure parent : another.getParentDomains())
+                if (domain0(current, parent))
+                    return true;
+        return false;
+    }
+
 
     private Preconditions() {
     }
