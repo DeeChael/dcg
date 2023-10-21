@@ -34,6 +34,8 @@ public final class Preconditions {
     }
 
     private static boolean domain0(DyStructure current, DyStructure another) {
+        if (current.isStatic() && !another.isStatic())
+            return false;
         if (current instanceof DyUndefinedStructure)
             return true;
         if (another == current)

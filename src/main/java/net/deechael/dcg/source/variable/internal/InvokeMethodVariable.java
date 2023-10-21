@@ -2,7 +2,7 @@ package net.deechael.dcg.source.variable.internal;
 
 import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.invokation.Invoker;
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.variable.Variable;
 import org.jetbrains.annotations.NotNull;
 

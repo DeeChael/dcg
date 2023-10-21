@@ -1,24 +1,24 @@
 package net.deechael.dcg.source;
 
 import com.google.gson.JsonObject;
-import net.deechael.dcg.source.structure.DyAnnotatable;
-import net.deechael.dcg.source.structure.DySerializable;
-import net.deechael.dcg.source.structure.DySource;
-import net.deechael.dcg.source.structure.DyStructure;
+import net.deechael.dcg.source.structure.*;
 import net.deechael.dcg.source.structure.container.DyConstructorContainer;
 import net.deechael.dcg.source.structure.container.DyFieldContainer;
 import net.deechael.dcg.source.structure.container.DyMethodContainer;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.importation.DyImportable;
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
+import net.deechael.dcg.source.type.GenericType;
 import net.deechael.dcg.source.variable.JvmVariable;
 import net.deechael.dcg.source.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
-public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyType, DyFieldContainer, DyMethodContainer, DyConstructorContainer, DyImportable, DySerializable {
+public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyType, DyFieldContainer, DyMethodContainer, DyConstructorContainer, DyImportable, DyGenericable, DySerializable {
 
     private Visibility visibility;
 
@@ -111,4 +111,13 @@ public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyTy
         return this.visibility;
     }
 
+    @Override
+    public GenericType addGeneric(@NotNull String typeName, @Nullable DyType extending) {
+        return null;
+    }
+
+    @Override
+    public List<Map.Entry<GenericType, Optional<DyType>>> listGenerics() {
+        return null;
+    }
 }

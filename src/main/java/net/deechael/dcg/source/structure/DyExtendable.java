@@ -1,6 +1,6 @@
 package net.deechael.dcg.source.structure;
 
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
 
 public interface DyExtendable {
 

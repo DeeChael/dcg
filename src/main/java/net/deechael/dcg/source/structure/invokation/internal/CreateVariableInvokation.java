@@ -3,7 +3,7 @@ package net.deechael.dcg.source.structure.invokation.internal;
 import net.deechael.dcg.source.structure.DyAnnotatable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
 import net.deechael.dcg.util.StringCompiler;
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.variable.JvmVariable;
 import net.deechael.dcg.source.variable.Variable;
 import org.jetbrains.annotations.NotNull;

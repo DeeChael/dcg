@@ -11,4 +11,8 @@ public interface DyStructure {
     @NotNull
     DyStructure[] getParentDomains();
 
+    default boolean isStatic() {
+        return false;
+    }
+
 }

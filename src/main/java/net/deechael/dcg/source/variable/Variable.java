@@ -4,6 +4,7 @@ import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.DyUndefinedStructure;
 import net.deechael.dcg.source.structure.invokation.Invoker;
 import net.deechael.dcg.source.structure.requirement.Requirement;
+import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.variable.internal.InvokeMethodVariable;
 import net.deechael.dcg.source.variable.internal.SuperVariable;
 import net.deechael.dcg.source.variable.internal.ThisVariable;

@@ -6,14 +6,11 @@ import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.invokation.DyInvokable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
 import net.deechael.dcg.source.structure.invokation.Invoker;
-import net.deechael.dcg.source.structure.invokation.internal.CreateLabelInvokation;
-import net.deechael.dcg.source.structure.invokation.internal.CreateVariableInvokation;
-import net.deechael.dcg.source.structure.invokation.internal.InvokeMethodInvokation;
-import net.deechael.dcg.source.structure.invokation.internal.ModifyVariableInvokation;
+import net.deechael.dcg.source.structure.invokation.internal.*;
 import net.deechael.dcg.source.structure.selection.IfElseSelection;
 import net.deechael.dcg.source.structure.selection.TryCatchSelection;
 import net.deechael.dcg.util.Preconditions;
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.variable.Variable;
 import net.deechael.dcg.source.variable.internal.InvokeMethodVariable;
 import net.deechael.dcg.source.variable.internal.ReferringVariable;
@@ -22,6 +19,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 
 public abstract class DyExecutable implements DyInvokable, DyStructure, DyTranstringable {
 
@@ -71,6 +69,18 @@ public abstract class DyExecutable implements DyInvokable, DyStructure, DyTranst
         TryCatchSelection selection = new TryCatchSelection(this);
         this.invokations.add(selection);
         return selection;
+    }
+
+    public void executable(boolean isSynchronized, Consumer<DyExecutable> invokation) {
+        DyExecutable executable = new DyInnerExecutable(new DyStructure[] { this });
+        invokation.accept(executable);
+        this.invokations.add(new ExecutableInvokation(executable, isSynchronized));
+    }
+
+    public void doReturn(@Nullable Variable variable) {
+        if (variable != null)
+            Preconditions.domain(this, variable.getDomain());
+        this.invokations.add(new ReturnInvokation(variable));
     }
 
     @Override

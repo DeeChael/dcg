@@ -12,6 +12,6 @@ public interface DyExportable {
     @NotNull
     String toExportableString();
 
-    boolean isStatic();
+    boolean isStaticExportable();
 
 }

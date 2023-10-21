@@ -1,4 +1,4 @@
-package net.deechael.dcg.source.variable;
+package net.deechael.dcg.source.type;
 
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invoker;
@@ -88,7 +88,7 @@ public interface DyType extends DyExportable, Invoker {
     }
 
     @Override
-    default boolean isStatic() {
+    default boolean isStaticExportable() {
         return false;
     }
 

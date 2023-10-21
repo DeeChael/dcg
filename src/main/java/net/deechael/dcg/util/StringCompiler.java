@@ -1,8 +1,10 @@
 package net.deechael.dcg.util;
 
+import net.deechael.dcg.source.structure.DyGenericable;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
-import net.deechael.dcg.source.variable.DyType;
+import net.deechael.dcg.source.type.DyType;
+import net.deechael.dcg.source.type.GenericType;
 import net.deechael.dcg.source.variable.JvmVariable;
 
 import java.util.*;
@@ -41,9 +43,9 @@ public final class StringCompiler {
         for (DyExportable exportable : imports)
             sortedExportables.add(exportable);
         sortedExportables.sort((o1, o2) -> {
-            if (o1.isStatic() && !o2.isStatic())
+            if (o1.isStaticExportable() && !o2.isStaticExportable())
                 return 1;
-            else if (!o1.isStatic() && o2.isStatic())
+            else if (!o1.isStaticExportable() && o2.isStaticExportable())
                 return -1;
             return 0;
         });
@@ -51,7 +53,7 @@ public final class StringCompiler {
         for (DyExportable exportable : imports) {
             builder.append("import")
                     .append(" ");
-            if (exportable.isStatic())
+            if (exportable.isStaticExportable())
                 builder.append("static")
                         .append(" ");
             builder.append(exportable.toExportableString())
@@ -68,6 +70,27 @@ public final class StringCompiler {
             builder.append(invokation.toCompilableString())
                     .append("\n");
         }
+        return builder.toString();
+    }
+
+    public static String compileGenericables(DyGenericable genericable) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("<");
+        Iterator<Map.Entry<GenericType, Optional<DyType>>> iterator = genericable.listGenerics().iterator();
+        if (iterator.hasNext())
+            for (Map.Entry<GenericType, Optional<DyType>> entry = iterator.next(); iterator.hasNext(); entry = iterator.next()) {
+                builder.append(entry.getKey().getName());
+                entry.getValue().ifPresent(type -> {
+                    builder.append(" ")
+                            .append("extends")
+                            .append(" ")
+                            .append(type.toTypeString());
+                });
+                if (iterator.hasNext())
+                    builder.append(",")
+                            .append(" ");
+            }
+        builder.append(">");
         return builder.toString();
     }
 
