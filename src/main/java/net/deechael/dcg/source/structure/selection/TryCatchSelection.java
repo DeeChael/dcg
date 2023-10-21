@@ -25,7 +25,7 @@ public final class TryCatchSelection implements Invokation {
     public TryCatchSelection(DyStructure parent) {
         this.parent = parent;
 
-        this.tryExecutable = new DyInnerExecutable(new DyStructure[] { parent });
+        this.tryExecutable = new DyInnerExecutable(new DyStructure[]{parent});
     }
 
     public TryCatchSelection doTry(Consumer<DyExecutable> invokation) {
@@ -37,7 +37,7 @@ public final class TryCatchSelection implements Invokation {
     public TryCatchSelection doCatch(BiConsumer<DyExecutable, Variable> invokation, String throwableParamterName, DyType... throwableTypes) {
         if (throwableTypes.length == 0)
             throw new IllegalArgumentException("Throwable types must be over at least 1!");
-        DyExecutable catchExecutable = new DyInnerExecutable(new DyStructure[] { parent });
+        DyExecutable catchExecutable = new DyInnerExecutable(new DyStructure[]{parent});
         ReferringVariable variable = new ReferringVariable(catchExecutable, null, throwableParamterName);
         invokation.accept(catchExecutable, variable);
         this.catchesExecutable.add(new AbstractMap.SimpleEntry<>(new AbstractMap.SimpleEntry<>(List.of(throwableTypes), throwableParamterName), catchExecutable));
@@ -45,7 +45,7 @@ public final class TryCatchSelection implements Invokation {
     }
 
     public TryCatchSelection doFinally(Consumer<DyExecutable> invokation) {
-        DyExecutable finallyExecutable = new DyInnerExecutable(new DyStructure[] { parent });
+        DyExecutable finallyExecutable = new DyInnerExecutable(new DyStructure[]{parent});
         invokation.accept(finallyExecutable);
         this.finallyExecutable = finallyExecutable;
         return this;
@@ -67,21 +67,20 @@ public final class TryCatchSelection implements Invokation {
         if (!this.initialVariables.isEmpty()) {
             builder.append("(")
                     .append(String.join(
-                            "; ",
-                            this.initialVariables.stream()
-                                    .map( entry -> {
-                                        StringBuilder stringBuilder = new StringBuilder();
-                                        stringBuilder.append(entry.getKey().getType().toTypeString())
-                                                .append(" ")
-                                                .append(entry.getKey().getName())
-                                                .append(" ")
-                                                .append("=")
-                                                .append(" ")
-                                                .append(entry.getValue().toVariableString());
-                                        return stringBuilder.toString();
-                                    })
-                                    .toList()
-                                    .toArray(new String[0])
+                                    "; ",
+                                    this.initialVariables.stream()
+                                            .map(entry -> {
+                                                String stringBuilder = entry.getKey().getType().toTypeString() +
+                                                        " " +
+                                                        entry.getKey().getName() +
+                                                        " " +
+                                                        "=" +
+                                                        " " +
+                                                        entry.getValue().toVariableString();
+                                                return stringBuilder;
+                                            })
+                                            .toList()
+                                            .toArray(new String[0])
                             )
                     )
                     .append(")")

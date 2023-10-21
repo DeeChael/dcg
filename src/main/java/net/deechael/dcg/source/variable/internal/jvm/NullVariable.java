@@ -1,12 +1,10 @@
 package net.deechael.dcg.source.variable.internal.jvm;
 
-import net.deechael.dcg.source.structure.DyStructure;
-import net.deechael.dcg.source.structure.DyUndefinedStructure;
-import net.deechael.dcg.source.variable.Variable;
 import net.deechael.dcg.source.type.DyType;
+import net.deechael.dcg.source.variable.JvmVariable;
 import org.jetbrains.annotations.NotNull;
 
-public class NullVariable implements Variable {
+public class NullVariable implements JvmVariable {
 
     public final static NullVariable INSTANCE = new NullVariable();
 
@@ -20,16 +18,6 @@ public class NullVariable implements Variable {
         } catch (NoSuchFieldException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public String getName() {
-        return "null";
-    }
-
-    @Override
-    public @NotNull DyStructure getDomain() {
-        return DyUndefinedStructure.INSTANCE;
     }
 
     @Override

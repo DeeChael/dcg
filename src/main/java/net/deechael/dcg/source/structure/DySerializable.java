@@ -7,6 +7,7 @@ public interface DySerializable {
 
     /**
      * To serialize the object to a json object
+     *
      * @return serialized json object
      */
     @NotNull

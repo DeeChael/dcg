@@ -9,6 +9,7 @@ import net.deechael.dcg.source.variable.internal.InvokeMethodVariable;
 import net.deechael.dcg.source.variable.internal.SuperVariable;
 import net.deechael.dcg.source.variable.internal.ThisVariable;
 import net.deechael.dcg.source.variable.internal.jvm.NullVariable;
+import net.deechael.dcg.source.variable.internal.jvm.StringVariable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,6 +25,7 @@ public interface Variable extends Invoker, Requirement {
 
     /**
      * Get the name of the variable, only exists if it's a defined variable
+     *
      * @return name, exception when not exists
      */
     String getName();
@@ -54,8 +56,12 @@ public interface Variable extends Invoker, Requirement {
         return this.toVariableString();
     }
 
-    static Variable nullVariable() {
+    static JvmVariable nullVariable() {
         return NullVariable.INSTANCE;
+    }
+
+    static JvmVariable stringVariable(String value) {
+        return new StringVariable(value);
     }
 
     static Variable invokeMethodVariable(@Nullable Invoker invoker, @NotNull String methodName, Variable... parameters) {

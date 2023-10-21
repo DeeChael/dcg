@@ -7,7 +7,7 @@ import java.net.URI;
 
 final class DynamicStringObject extends SimpleJavaFileObject {
 
-    private DyGeneratable generatable;
+    private final DyGeneratable generatable;
     private final String content;
 
     public DynamicStringObject(DyGeneratable generatable, URI uri, Kind kind, String content) {

@@ -13,10 +13,9 @@ public class InvokeMethodInvokation implements Invokation {
 
     @Override
     public String toCompilableString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.variable.toVariableString())
-                .append(";");
-        return builder.toString();
+        String builder = this.variable.toVariableString() +
+                ";";
+        return builder;
     }
 
 }

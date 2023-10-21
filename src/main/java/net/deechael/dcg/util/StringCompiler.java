@@ -1,13 +1,18 @@
 package net.deechael.dcg.util;
 
 import net.deechael.dcg.source.structure.DyGenericable;
+import net.deechael.dcg.source.structure.DyParameter;
+import net.deechael.dcg.source.structure.DyParameterable;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invokation;
 import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.type.GenericType;
 import net.deechael.dcg.source.variable.JvmVariable;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public final class StringCompiler {
 
@@ -25,7 +30,7 @@ public final class StringCompiler {
             builder.append(String.join(", ", entry.getValue()
                     .entrySet()
                     .stream()
-                    .map( value -> new StringBuilder()
+                    .map(value -> new StringBuilder()
                             .append(value.getKey())
                             .append("=")
                             .append(value.getValue().toVariableString())
@@ -76,21 +81,27 @@ public final class StringCompiler {
     public static String compileGenericables(DyGenericable genericable) {
         StringBuilder builder = new StringBuilder();
         builder.append("<");
-        Iterator<Map.Entry<GenericType, Optional<DyType>>> iterator = genericable.listGenerics().iterator();
+        Iterator<GenericType> iterator = genericable.listGenerics().iterator();
         if (iterator.hasNext())
-            for (Map.Entry<GenericType, Optional<DyType>> entry = iterator.next(); iterator.hasNext(); entry = iterator.next()) {
-                builder.append(entry.getKey().getName());
-                entry.getValue().ifPresent(type -> {
-                    builder.append(" ")
-                            .append("extends")
-                            .append(" ")
-                            .append(type.toTypeString());
-                });
+            for (GenericType type = iterator.next(); iterator.hasNext(); type = iterator.next()) {
+                builder.append(type.toGenericTypeString());
                 if (iterator.hasNext())
                     builder.append(",")
                             .append(" ");
             }
         builder.append(">");
+        return builder.toString();
+    }
+
+    public static String compileParameters(DyParameterable parameterable) {
+        StringBuilder builder = new StringBuilder();
+        Iterator<DyParameter> iterator = parameterable.listParameters().iterator();
+        if (iterator.hasNext())
+            for (DyParameter parameter = iterator.next(); iterator.hasNext(); parameter = iterator.next()) {
+                builder.append(parameter.toCompilableString());
+                if (iterator.hasNext())
+                    builder.append(", ");
+            }
         return builder.toString();
     }
 

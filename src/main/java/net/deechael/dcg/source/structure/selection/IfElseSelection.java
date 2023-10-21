@@ -21,14 +21,14 @@ public class IfElseSelection implements Invokation {
     }
 
     public IfElseSelection doIf(Requirement requirement, Consumer<DyExecutable> invokation) {
-        DyInnerExecutable executable = new DyInnerExecutable(new DyStructure[] { parent });
+        DyInnerExecutable executable = new DyInnerExecutable(new DyStructure[]{parent});
         invokation.accept(executable);
         this.ifs.add(new AbstractMap.SimpleEntry<>(requirement, executable));
         return this;
     }
 
     public IfElseSelection doElse(Consumer<DyExecutable> invokation) {
-        DyInnerExecutable executable = new DyInnerExecutable(new DyStructure[] { parent });
+        DyInnerExecutable executable = new DyInnerExecutable(new DyStructure[]{parent});
         invokation.accept(executable);
         this._else = executable;
         return this;

@@ -6,12 +6,13 @@ public interface DyStructure {
 
     /**
      * Get parents domains to which this structure object belongs
+     *
      * @return parent domains
      */
     @NotNull
     DyStructure[] getParentDomains();
 
-    default boolean isStatic() {
+    default boolean isStaticStructure() {
         return false;
     }
 

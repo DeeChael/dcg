@@ -7,7 +7,7 @@ import javax.tools.JavaFileObject;
 import java.util.ArrayList;
 import java.util.List;
 
-final class DynamicJavaFileManager extends ForwardingJavaFileManager<JavaFileManager>  {
+final class DynamicJavaFileManager extends ForwardingJavaFileManager<JavaFileManager> {
 
     private final List<DynamicJavaFileObject> cache = new ArrayList<>();
     private DynamicJavaFileObject javaFileObject;

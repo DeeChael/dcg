@@ -1,7 +1,9 @@
 package net.deechael.dcg.source;
 
-import net.deechael.dcg.util.Preconditions;
+import net.deechael.dcg.source.structure.DySource;
+import net.deechael.dcg.source.structure.type.DyClass;
 import net.deechael.dcg.source.variable.Visibility;
+import net.deechael.dcg.util.Preconditions;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
@@ -14,7 +16,7 @@ public class DyPackage {
 
     private final DynamicSourcer sourcer;
     private final String name;
-    private final List<DyClass> classes = new ArrayList<>();
+    private final List<DySource> classes = new ArrayList<>();
 
     DyPackage(DynamicSourcer sourcer, String name) {
         Preconditions.regex(name, ILLEGAL_PACKAGE_REGEX, "The value didn't match the regex");

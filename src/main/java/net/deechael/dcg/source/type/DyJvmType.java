@@ -21,7 +21,7 @@ final class DyJvmType implements DyType {
             tempClass = tempClass.getComponentType();
             this.isArray = true;
         }
-        this.baseType = classType(tempClass);
+        this.baseType = DyType.classType(tempClass);
     }
 
     @Override

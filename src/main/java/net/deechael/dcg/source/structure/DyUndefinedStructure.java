@@ -6,7 +6,8 @@ public final class DyUndefinedStructure implements DyStructure {
 
     public final static DyUndefinedStructure INSTANCE = new DyUndefinedStructure();
 
-    private DyUndefinedStructure() {}
+    private DyUndefinedStructure() {
+    }
 
     @Override
     public @NotNull DyStructure[] getParentDomains() {

@@ -53,7 +53,7 @@ final class DynamicClassLoader extends ClassLoader {
         }
     }
 
-    protected Class<?> generate0(String className, byte[] bytes) {
+    Class<?> generate0(String className, byte[] bytes) {
         Class<?> clazz = defineClass(className, bytes, 0, bytes.length);
         this.generatedClasses.put(className, clazz);
         return clazz;

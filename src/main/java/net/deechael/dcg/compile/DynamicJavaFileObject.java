@@ -9,7 +9,7 @@ import java.net.URI;
 
 final class DynamicJavaFileObject extends SimpleJavaFileObject {
 
-    private DyGeneratable generatable;
+    private final DyGeneratable generatable;
     private final ByteArrayOutputStream byteArrayOutputStream;
 
     DynamicJavaFileObject(DyGeneratable generatable, String className, Kind kind) {

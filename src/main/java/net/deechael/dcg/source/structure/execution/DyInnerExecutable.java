@@ -4,7 +4,7 @@ import net.deechael.dcg.source.structure.DyStructure;
 import net.deechael.dcg.source.structure.invokation.Invokation;
 import org.jetbrains.annotations.NotNull;
 
-public final class DyInnerExecutable extends DyExecutable {
+public class DyInnerExecutable extends DyExecutable {
 
     private final DyStructure[] parentDomains;
 

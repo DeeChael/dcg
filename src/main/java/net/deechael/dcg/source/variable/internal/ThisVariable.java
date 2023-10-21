@@ -27,11 +27,10 @@ public final class ThisVariable implements Variable, NonNameVariable {
 
     @Override
     public String toVariableString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append(this.type.toTypeString())
-                .append(".")
-                .append("this");
-        return builder.toString();
+        String builder = this.type.toTypeString() +
+                "." +
+                "this";
+        return builder;
     }
 
 }

@@ -8,12 +8,13 @@ import net.deechael.dcg.source.structure.invokation.Invokation;
 import net.deechael.dcg.source.structure.invokation.Invoker;
 import net.deechael.dcg.source.structure.invokation.internal.*;
 import net.deechael.dcg.source.structure.selection.IfElseSelection;
+import net.deechael.dcg.source.structure.selection.SwitchCaseSelection;
 import net.deechael.dcg.source.structure.selection.TryCatchSelection;
-import net.deechael.dcg.util.Preconditions;
 import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.variable.Variable;
 import net.deechael.dcg.source.variable.internal.InvokeMethodVariable;
 import net.deechael.dcg.source.variable.internal.ReferringVariable;
+import net.deechael.dcg.util.Preconditions;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -71,8 +72,14 @@ public abstract class DyExecutable implements DyInvokable, DyStructure, DyTranst
         return selection;
     }
 
+    public SwitchCaseSelection switchCase(Variable selector) {
+        SwitchCaseSelection selection = new SwitchCaseSelection(this, selector);
+        this.invokations.add(selection);
+        return selection;
+    }
+
     public void executable(boolean isSynchronized, Consumer<DyExecutable> invokation) {
-        DyExecutable executable = new DyInnerExecutable(new DyStructure[] { this });
+        DyExecutable executable = new DyInnerExecutable(new DyStructure[]{this});
         invokation.accept(executable);
         this.invokations.add(new ExecutableInvokation(executable, isSynchronized));
     }

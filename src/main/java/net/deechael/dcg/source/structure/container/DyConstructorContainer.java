@@ -6,6 +6,7 @@ public interface DyConstructorContainer {
 
     /**
      * Get the full name of the container
+     *
      * @return full name
      */
     String getName();

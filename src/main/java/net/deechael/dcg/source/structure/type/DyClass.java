@@ -1,12 +1,15 @@
-package net.deechael.dcg.source;
+package net.deechael.dcg.source.structure.type;
 
 import com.google.gson.JsonObject;
+import net.deechael.dcg.source.DyPackage;
 import net.deechael.dcg.source.structure.*;
 import net.deechael.dcg.source.structure.container.DyConstructorContainer;
 import net.deechael.dcg.source.structure.container.DyFieldContainer;
 import net.deechael.dcg.source.structure.container.DyMethodContainer;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.importation.DyImportable;
+import net.deechael.dcg.source.structure.method.DyClassMethod;
+import net.deechael.dcg.source.structure.method.DyMethod;
 import net.deechael.dcg.source.type.DyType;
 import net.deechael.dcg.source.type.GenericType;
 import net.deechael.dcg.source.variable.JvmVariable;
@@ -14,21 +17,29 @@ import net.deechael.dcg.source.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyType, DyFieldContainer, DyMethodContainer, DyConstructorContainer, DyImportable, DyGenericable, DySerializable {
 
-    private Visibility visibility;
+    private final Visibility visibility;
 
     private final DyPackage dyPackage;
     private final String className;
 
-    DyClass(Visibility visibility, DyPackage dyPackage, String className) {
+    private final List<DyMethod> methods = new ArrayList<>();
+
+    public DyClass(Visibility visibility, DyPackage dyPackage, String className) {
         this.visibility = visibility;
         this.dyPackage = dyPackage;
         this.className = className;
+    }
+
+    public DyClassMethod newMethod(@NotNull Visibility visibility, @Nullable DyType returnType, @NotNull String name) {
+        DyClassMethod method = new DyClassMethod(new DyStructure[]{this}, visibility, returnType, name);
+        this.methods.add(method);
+        return method;
     }
 
     @Override
@@ -117,7 +128,7 @@ public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyTy
     }
 
     @Override
-    public List<Map.Entry<GenericType, Optional<DyType>>> listGenerics() {
+    public List<GenericType> listGenerics() {
         return null;
     }
 }

@@ -1,5 +1,6 @@
 package net.deechael.dcg.source;
 
+import net.deechael.dcg.source.structure.type.DyClass;
 import net.deechael.dcg.source.variable.Visibility;
 import org.jetbrains.annotations.NotNull;
 
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class DynamicSourcer {
 
-    public final static String[] JVM_KEYWORDS = new String[] {
+    public final static String[] JVM_KEYWORDS = new String[]{
             "package", "class", "public", "private", "protected", "interface", "enum",
             "final", "abstract", "new", "while", "for", "do", "if", "else", "import",
             "return", "this",

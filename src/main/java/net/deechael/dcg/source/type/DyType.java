@@ -3,6 +3,7 @@ package net.deechael.dcg.source.type;
 import net.deechael.dcg.source.structure.importation.DyExportable;
 import net.deechael.dcg.source.structure.invokation.Invoker;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public interface DyType extends DyExportable, Invoker {
 
@@ -42,6 +43,11 @@ public interface DyType extends DyExportable, Invoker {
     @NotNull
     static DyType genericClassType(@NotNull Class<?> clazz, @NotNull DyType... types) {
         return new DyJvmGenericType(clazz, types);
+    }
+
+    @NotNull
+    static DyType unknownGenericType(@Nullable DyType extending) {
+        return new UnknownGenericType(extending);
     }
 
     /**

@@ -1,28 +1,22 @@
 package net.deechael.dcg.source.structure.execution;
 
+import net.deechael.dcg.source.structure.DyLabel;
 import net.deechael.dcg.source.structure.DyStructure;
-import net.deechael.dcg.source.structure.invokation.Invokation;
-import org.jetbrains.annotations.NotNull;
+import net.deechael.dcg.source.structure.invokation.internal.ContinueInvokation;
+import org.jetbrains.annotations.Nullable;
 
-public final class DyLoopExecutable extends DyExecutable {
-
-    private final DyStructure[] parentDomains;
+public final class DyLoopExecutable extends DySwitchExecutable {
 
     public DyLoopExecutable(DyStructure[] parentDomains) {
-        this.parentDomains = parentDomains;
+        super(parentDomains);
     }
 
-    @Override
-    public @NotNull DyStructure[] getParentDomains() {
-        return this.parentDomains;
+    public void doContinue() {
+        this.doBreak(null);
     }
 
-    @Override
-    public String toCompilableString() {
-        StringBuilder builder = new StringBuilder();
-        for (Invokation invokation : this.listInvokations())
-            builder.append(invokation.toCompilableString()).append("\n");
-        return builder.toString();
+    public void doContinue(@Nullable DyLabel label) {
+        this.addInvokation(new ContinueInvokation(label));
     }
 
 }
