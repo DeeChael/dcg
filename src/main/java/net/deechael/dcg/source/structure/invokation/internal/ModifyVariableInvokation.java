@@ -16,13 +16,14 @@ public class ModifyVariableInvokation implements Invokation {
 
     @Override
     public String toCompilableString() {
-        String builder = this.referring.toVariableString() +
-                " " +
-                "=" +
-                " " +
-                this.newValue.toVariableString() +
-                ";";
-        return builder;
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.referring.toVariableString())
+                .append(" ")
+                .append("=")
+                .append(" ")
+                .append(this.newValue.toVariableString())
+                .append(";");
+        return builder.toString();
     }
 
 }

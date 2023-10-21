@@ -19,9 +19,10 @@ public class StringVariable implements JvmVariable {
 
     @Override
     public String toVariableString() {
-        String builder = "\"" +
-                this.value +
-                "\"";
-        return builder;
+        StringBuilder builder = new StringBuilder();
+        builder.append("\"")
+                .append(this.value)
+                .append("\"");
+        return builder.toString();
     }
 }

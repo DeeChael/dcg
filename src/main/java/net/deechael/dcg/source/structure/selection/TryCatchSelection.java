@@ -67,20 +67,21 @@ public final class TryCatchSelection implements Invokation {
         if (!this.initialVariables.isEmpty()) {
             builder.append("(")
                     .append(String.join(
-                                    "; ",
-                                    this.initialVariables.stream()
-                                            .map(entry -> {
-                                                String stringBuilder = entry.getKey().getType().toTypeString() +
-                                                        " " +
-                                                        entry.getKey().getName() +
-                                                        " " +
-                                                        "=" +
-                                                        " " +
-                                                        entry.getValue().toVariableString();
-                                                return stringBuilder;
-                                            })
-                                            .toList()
-                                            .toArray(new String[0])
+                            "; ",
+                            this.initialVariables.stream()
+                                    .map( entry -> {
+                                        StringBuilder stringBuilder = new StringBuilder();
+                                        stringBuilder.append(entry.getKey().getType().toTypeString())
+                                                .append(" ")
+                                                .append(entry.getKey().getName())
+                                                .append(" ")
+                                                .append("=")
+                                                .append(" ")
+                                                .append(entry.getValue().toVariableString());
+                                        return stringBuilder.toString();
+                                    })
+                                    .toList()
+                                    .toArray(new String[0])
                             )
                     )
                     .append(")")

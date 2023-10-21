@@ -12,7 +12,10 @@ public class CreateLabelInvokation implements Invokation {
 
     @Override
     public String toCompilableString() {
-        return this.labelName + ":";
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.labelName)
+                .append(":");
+        return builder.toString();
     }
 
 }

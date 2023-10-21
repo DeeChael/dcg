@@ -27,10 +27,11 @@ public final class SuperVariable implements Variable, NonNameVariable {
 
     @Override
     public String toVariableString() {
-        String builder = this.type.toTypeString() +
-                "." +
-                "super";
-        return builder;
+        StringBuilder builder = new StringBuilder();
+        builder.append(this.type.toTypeString())
+                .append(".")
+                .append("super");
+        return builder.toString();
     }
 
 }
