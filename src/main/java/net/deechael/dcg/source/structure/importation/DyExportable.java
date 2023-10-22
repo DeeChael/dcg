@@ -14,4 +14,8 @@ public interface DyExportable {
 
     boolean isStaticExportable();
 
+    default boolean isExportable() {
+        return true;
+    }
+
 }

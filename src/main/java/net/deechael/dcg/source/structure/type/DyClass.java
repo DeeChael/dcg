@@ -21,13 +21,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyType, DyFieldContainer, DyMethodContainer, DyConstructorContainer, DyImportable, DyGenericable, DySerializable {
+public final class DyClass implements DySource, DyAnnotatable, DyType, DyFieldContainer, DyMethodContainer, DyConstructorContainer, DyImportable, DyGenericable, DySerializable {
 
     private final Visibility visibility;
 
     private final DyPackage dyPackage;
     private final String className;
 
+    private final List<DyExportable> imports = new ArrayList<>();
     private final List<DyMethod> methods = new ArrayList<>();
 
     public DyClass(Visibility visibility, DyPackage dyPackage, String className) {
@@ -109,7 +110,9 @@ public final class DyClass implements DyStructure, DySource, DyAnnotatable, DyTy
 
     @Override
     public void imports(DyExportable... types) {
-
+        for (DyExportable exportable : types)
+            if (exportable.isExportable())
+                this.imports.add(exportable);
     }
 
     @Override

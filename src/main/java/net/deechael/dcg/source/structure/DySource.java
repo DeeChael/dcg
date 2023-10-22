@@ -4,7 +4,7 @@ import net.deechael.dcg.source.DyPackage;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public interface DySource extends DyVisible, DyGeneratable {
+public interface DySource extends DyStructure, DyVisible, DyGeneratable {
 
     /**
      * Get package of this class
